@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CODIGO ROJO - Sistema de acceso restringido. Una experiencia nostálgica de los 2010.">
+    <meta name="theme-color" content="#1a0000">
+    <title>CODIGO ROJO - ACCESO RESTRINGIDO</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- MATRIX BACKGROUND EFFECT -->
+    <div class="matrix-bg" id="matrixBg"></div>
+    
+    <!-- SCANLINES OVERLAY -->
+    <div class="scanlines"></div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="main-container">
+        <!-- ENTRANCE SCREEN -->
+        <div class="entrance" id="entrance">
+            <div class="title">⚠️ CODIGO ROJO ⚠️</div>
+            <div class="subtitle">ACCESO RESTRINGIDO</div>
+            <p class="entrance-text">
+                Sistema de seguridad clasificado<br>
+                Haz click para continuar
+            </p>
+            <button class="enter-btn" id="enterBtn">ENTRAR</button>
+        </div>
+
+        <!-- VICTORY SCREEN -->
+        <div class="victory" id="victory">
+            <div class="victory-title">🎉 ¡LO LOGRASTE! 🎉</div>
+            <p class="victory-subtitle">Navegaste todas las trampas del sistema...</p>
+            <a href="https://github.com/lautiiaquino" class="final-link" target="_blank">→ ACCEDER AL SISTEMA ←</a>
+            <p class="victory-footer">Sistema desactivado. Acceso concedido.</p>
+        </div>
+    </div>
+
+    <!-- POPUP TEMPLATES (Hidden) -->
+    <div id="popupContainer"></div>
+
+    <!-- SCRIPTS -->
+    <script src="js/script.js"></script>
+</body>
+</html>

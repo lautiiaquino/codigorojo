@@ -1,0 +1,508 @@
+/* ============================================ */
+/* CODIGO ROJO - Stylesheet Principal */
+/* Estilo retro-oscuro años 2010 */
+/* ============================================ */
+
+/* RESET Y VARIABLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #ff0000;
+    --secondary-color: #ff6666;
+    --dark-bg: #1a0000;
+    --darker-bg: #0d0000;
+    --success-color: #00ff00;
+    --border-radius: 5px;
+    --glow-distance: 20px;
+    --transition-speed: 0.3s;
+}
+
+/* ============================================ */
+/* BODY Y BACKGROUND */
+/* ============================================ */
+
+body {
+    background: linear-gradient(135deg, var(--dark-bg) 0%, #2d0000 50%, var(--dark-bg) 100%);
+    font-family: 'Courier New', monospace;
+    color: var(--primary-color);
+    overflow: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.05) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 999999;
+}
+
+/* ============================================ */
+/* CONTAINER PRINCIPAL */
+/* ============================================ */
+
+.main-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* ============================================ */
+/* EFECTOS VISUALES - SCANLINES */
+/* ============================================ */
+
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15) 0px,
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    z-index: 10;
+    animation: scan 8s linear infinite;
+}
+
+@keyframes scan {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(10px); }
+}
+
+/* ============================================ */
+/* MATRIX BACKGROUND */
+/* ============================================ */
+
+.matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.03;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--primary-color);
+    overflow: hidden;
+    line-height: 1.2;
+    word-break: break-all;
+}
+
+/* ============================================ */
+/* ENTRANCE SCREEN */
+/* ============================================ */
+
+.entrance {
+    text-align: center;
+    background: rgba(20, 0, 0, 0.9);
+    border: 3px solid var(--primary-color);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: 
+        0 0 var(--glow-distance) rgba(255, 0, 0, 0.5),
+        inset 0 0 var(--glow-distance) rgba(255, 0, 0, 0.1);
+    z-index: 1;
+    max-width: 500px;
+    animation: pulse 2s ease-in-out infinite;
+    transition: all var(--transition-speed);
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        box-shadow: 
+            0 0 var(--glow-distance) rgba(255, 0, 0, 0.5),
+            inset 0 0 var(--glow-distance) rgba(255, 0, 0, 0.1); 
+    }
+    50% { 
+        box-shadow: 
+            0 0 calc(var(--glow-distance) * 2) rgba(255, 0, 0, 0.8),
+            inset 0 0 calc(var(--glow-distance) * 1.5) rgba(255, 0, 0, 0.2); 
+    }
+}
+
+.title {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    letter-spacing: 3px;
+    animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { 
+        text-shadow: 0 0 10px rgba(255, 0, 0, 0.8); 
+        opacity: 1;
+    }
+    20%, 24%, 55% { 
+        text-shadow: 0 0 5px rgba(255, 0, 0, 0.3); 
+        opacity: 0.7;
+    }
+}
+
+.subtitle {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: var(--secondary-color);
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0%, 49%, 100% { opacity: 1; }
+    50%, 99% { opacity: 0.3; }
+}
+
+.entrance-text {
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* ============================================ */
+/* BOTONES */
+/* ============================================ */
+
+.enter-btn {
+    background: var(--primary-color);
+    color: var(--dark-bg);
+    border: 2px solid var(--primary-color);
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    transition: all var(--transition-speed);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    border-radius: calc(var(--border-radius) * 2);
+}
+
+.enter-btn:hover {
+    background: #ff3333;
+    box-shadow: 0 0 var(--glow-distance) rgba(255, 0, 0, 0.8);
+    transform: scale(1.05);
+}
+
+.enter-btn:active {
+    transform: scale(0.98);
+}
+
+.enter-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ============================================ */
+/* POPUPS */
+/* ============================================ */
+
+.popup {
+    position: fixed;
+    background: rgba(20, 0, 0, 0.95);
+    border: 3px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    font-size: 14px;
+    box-shadow: 
+        0 0 var(--glow-distance) rgba(255, 0, 0, 0.7),
+        0 10px 30px rgba(0, 0, 0, 0.8);
+    z-index: 100;
+    display: none;
+    max-width: 400px;
+    animation: popIn 0.3s ease-out;
+    min-width: 300px;
+}
+
+.popup.show {
+    display: block;
+}
+
+@keyframes popIn {
+    0% { 
+        transform: scale(0.5) rotateX(-20deg);
+        opacity: 0;
+    }
+    100% { 
+        transform: scale(1) rotateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes popOut {
+    0% { 
+        transform: scale(1) rotateX(0);
+        opacity: 1;
+    }
+    100% { 
+        transform: scale(0.5) rotateX(20deg);
+        opacity: 0;
+    }
+}
+
+.popup.hiding {
+    animation: popOut 0.3s ease-out forwards;
+}
+
+.popup-title {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.popup-content {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    line-height: 1.6;
+    font-size: 13px;
+}
+
+.popup-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.popup-btn {
+    padding: 8px 15px;
+    border: 2px solid var(--primary-color);
+    background: var(--dark-bg);
+    color: var(--primary-color);
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    transition: all 0.2s;
+    border-radius: 3px;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.popup-btn:hover {
+    background: var(--primary-color);
+    color: var(--dark-bg);
+    transform: scale(1.05);
+}
+
+.popup-btn:active {
+    transform: scale(0.95);
+}
+
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: var(--primary-color);
+    font-size: 24px;
+    cursor: pointer;
+    font-weight: bold;
+    background: none;
+    border: none;
+    padding: 0 5px;
+    transition: all 0.2s;
+}
+
+.close-btn:hover {
+    color: #ff3333;
+    transform: scale(1.2);
+}
+
+/* ============================================ */
+/* VICTORY SCREEN */
+/* ============================================ */
+
+.victory {
+    text-align: center;
+    display: none;
+    z-index: 200;
+    animation: victoryAppear 0.5s ease-out;
+}
+
+@keyframes victoryAppear {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.victory-title {
+    color: var(--success-color);
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-shadow: 
+        0 0 10px rgba(0, 255, 0, 0.8),
+        0 0 20px rgba(0, 255, 0, 0.4);
+    animation: victoryPulse 1s ease-in-out infinite;
+    letter-spacing: 2px;
+}
+
+@keyframes victoryPulse {
+    0%, 100% { 
+        transform: scale(1);
+        text-shadow: 
+            0 0 10px rgba(0, 255, 0, 0.8),
+            0 0 20px rgba(0, 255, 0, 0.4);
+    }
+    50% { 
+        transform: scale(1.05);
+        text-shadow: 
+            0 0 20px rgba(0, 255, 0, 1),
+            0 0 40px rgba(0, 255, 0, 0.6);
+    }
+}
+
+.victory-subtitle {
+    color: var(--success-color);
+    margin-bottom: 30px;
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+.final-link {
+    text-decoration: none;
+    color: var(--success-color);
+    font-weight: bold;
+    font-size: 18px;
+    border: 2px solid var(--success-color);
+    padding: 15px 30px;
+    display: inline-block;
+    margin: 20px 0;
+    box-shadow: 
+        0 0 10px rgba(0, 255, 0, 0.5),
+        inset 0 0 10px rgba(0, 255, 0, 0.1);
+    transition: all var(--transition-speed);
+    border-radius: var(--border-radius);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.final-link:hover {
+    box-shadow: 
+        0 0 var(--glow-distance) rgba(0, 255, 0, 0.8),
+        inset 0 0 15px rgba(0, 255, 0, 0.2);
+    transform: scale(1.05);
+    background: rgba(0, 255, 0, 0.1);
+}
+
+.final-link:active {
+    transform: scale(0.98);
+}
+
+.victory-footer {
+    color: var(--success-color);
+    font-size: 12px;
+    margin-top: 20px;
+    opacity: 0.7;
+}
+
+/* ============================================ */
+/* RESPONSIVE DESIGN */
+/* ============================================ */
+
+@media (max-width: 768px) {
+    .entrance {
+        padding: 30px;
+        max-width: 90vw;
+    }
+
+    .title {
+        font-size: 36px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .enter-btn {
+        padding: 12px 30px;
+        font-size: 16px;
+    }
+
+    .popup {
+        max-width: 85vw;
+        min-width: auto;
+    }
+
+    .victory-title {
+        font-size: 36px;
+    }
+
+    .final-link {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .entrance {
+        padding: 20px;
+    }
+
+    .title {
+        font-size: 28px;
+        letter-spacing: 2px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .enter-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .popup {
+        max-width: 90vw;
+        padding: 15px;
+    }
+
+    .victory-title {
+        font-size: 28px;
+    }
+
+    .final-link {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+/* ============================================ */
+/* ACCESIBILIDAD */
+/* ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background: linear-gradient(135deg, #ffcccc 0%, #ff9999 50%, #ffcccc 100%);
+    }
+}

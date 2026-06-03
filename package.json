@@ -1,0 +1,28 @@
+{
+  "name": "codigorojo",
+  "version": "1.0.0",
+  "description": "Una página web nostálgica inspirada en el caos de internet a finales de los 2000 y principios de los 2010. Experimento retro con popups falsos e interfaz tétrica.",
+  "main": "index.html",
+  "scripts": {
+    "start": "open index.html"
+  },
+  "keywords": [
+    "retro",
+    "2010s",
+    "nostalgia",
+    "web",
+    "popups",
+    "dark",
+    "experimental"
+  ],
+  "author": "lautiiaquino",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lautiiaquino/codigorojo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lautiiaquino/codigorojo/issues"
+  },
+  "homepage": "https://github.com/lautiiaquino/codigorojo"
+}
